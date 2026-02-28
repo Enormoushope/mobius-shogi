@@ -1,0 +1,109 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f4f1ea;
+    color: #333;
+}
+
+.controls {
+    margin-bottom: 15px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    gap: 1px;
+    background-color: #333;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid #333;
+}
+
+.cell {
+    background-color: #eab577;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.aura { background-color: #ffcccc; }
+.path { background-color: #88ccff; }
+.aura.path { background-color: #ccaaee; }
+
+/* 駒の装飾 */
+.piece {
+    z-index: 10;
+    display: block; /* 回転のためにブロック要素化 */
+    /* ⭐️追加：回転を滑らかにするアニメーション */
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+.piece.promoted {
+    color: #cc0000;
+}
+
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    margin: 0; padding: 20px;
+}
+
+#rule-box {
+    background-color: #fff; padding: 10px; border: 1px solid #ccc; 
+    width: 450px; margin: 0 auto 10px; text-align: left; font-size: 14px;
+}
+#rule-box ul { margin: 5px 0; padding-left: 20px; }
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 1px; background-color: #333; padding: 2px;
+    width: max-content; margin: 0 auto;
+}
+
+.cell {
+    width: 40px; height: 40px; background-color: #eebb88;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: bold; cursor: pointer;
+    position: relative;
+}
+
+.path::after {
+    content: ''; position: absolute; width: 15px; height: 15px;
+    background-color: rgba(255, 0, 0, 0.5); border-radius: 50%;
+}
+
+.hand-container {
+    width: 430px; margin: 10px auto; padding: 10px;
+    background-color: #fff; border: 2px solid #ccc; min-height: 40px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 5px;
+    text-align: left; font-weight: bold;
+}
+
+/* 王手メッセージのアニメーション */
+#oute-message {
+    color: red; font-size: 24px; font-weight: bold; 
+    height: 30px; margin: 5px auto; animation: blink 1s infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ゲームオーバー画面 */
+#game-over-modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95); padding: 40px; border: 4px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 1000; text-align: center;
+    border-radius: 10px; display: none;
+}
+#game-over-modal h2 { margin-top: 0; color: #d32f2f; font-size: 32px;}
+#game-over-modal button { 
+    padding: 10px 20px; font-size: 18px; cursor: pointer; 
+    background-color: #4CAF50; color: white; border: none; border-radius: 5px;
+}
+#game-over-modal button:hover { background-color: #45a049; }

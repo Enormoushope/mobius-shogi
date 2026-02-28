@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メビウス将棋</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>🌀 メビウス将棋</h1>
+    
+    <div id="rule-box">
+    <strong>【異次元ループ将棋 特殊ルール】</strong>
+    <ul>
+        <li><strong>空間のワープ：</strong>上辺と左辺、下辺と右辺が繋がっています。盤の端から飛び出すと、進行方向が90度回転して別の方角からワープしてきます。</li>
+        <li><strong>斜めの反転：</strong>四隅などから斜めに盤外へ飛び出そうとすると、見えない壁に弾かれて180度反転（Uターン）します。</li>
+        <li><strong>特殊な「成り」：</strong>「敵陣の2〜3段目」かつ「左右の端（1・9筋）を除いた内側」が成りエリアです。一番外周の端マスでは成れません。</li>
+        <li><strong>行き所のない駒はなし：</strong>ワープできるため、一番奥の段に歩や香車を打つ（進む）のも合法です。（二歩や打ち歩詰は通常通り反則）</li>
+        <li><strong>千日手：</strong>同一局面（駒の配置だけでよく、<strong>「向き（回転）」</strong>は一致する必要なし）が4回出現で引き分け。</li>
+    </ul>
+</div>
+    
+    <div id="ai-hand" class="hand-container">AIの持ち駒: </div>
+    
+    <div id="oute-message"></div>
+
+    <div id="ai-status" style="color: blue; font-weight: bold; height: 20px; margin-bottom: 5px;"></div>
+    
+    <div id="startup-screen" style="text-align:center; margin: 20px;">
+        <button id="btn-start-game" style="font-size: 24px; padding: 15px 40px; font-weight: bold; background-color: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+            🚀 対局開始！
+        </button>
+    </div>
+    
+    <div id="board"></div>
+
+    <div id="player-hand" class="hand-container">あなたの持ち駒: </div>
+
+    <div id="game-over-modal">
+        <h2 id="game-over-text">勝利！</h2>
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+            <canvas id="snapshot-canvas" width="360" height="360" style="border:1px solid #333;"></canvas>
+            <canvas id="eval-canvas" width="400" height="200" style="border:1px solid #333;"></canvas>
+        </div>
+        <div style="margin-top:8px; display:flex; gap:8px;">
+            <button onclick="resetGame()">リセットして続ける</button>
+            <button onclick="document.getElementById('game-over-modal').style.display='none'">閉じる</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="engine.js"></script>
+    <script src="ui.js"></script>
+</body>
+</html>
